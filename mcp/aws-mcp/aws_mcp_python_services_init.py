@@ -9,10 +9,12 @@ from aws_mcp_python_config import aws_config
 class DynamoDBService:
     """Service for DynamoDB operations."""
 
+    # Initialize DynamoDB client and resource access.
     def __init__(self) -> None:
         self.client = boto3.client("dynamodb", **aws_config.get_boto3_config())
         self.resource = boto3.resource("dynamodb", **aws_config.get_boto3_config())
 
+    # Create a DynamoDB table with the provided schema.
     def create_table(
         self,
         table_name: str,
@@ -53,6 +55,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Retrieve metadata describing a DynamoDB table.
     def describe_table(self, table_name: str) -> Dict[str, Any]:
         """Get details about a DynamoDB table."""
         try:
@@ -75,6 +78,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Remove an existing DynamoDB table.
     def delete_table(self, table_name: str) -> Dict[str, Any]:
         """Delete a DynamoDB table."""
         try:
@@ -87,6 +91,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Modify table billing mode or throughput.
     def update_table(
         self,
         table_name: str,
@@ -115,6 +120,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Insert a single item into a DynamoDB table.
     def put_item(self, table_name: str, item: Dict[str, Any]) -> Dict[str, Any]:
         """Put an item into a DynamoDB table."""
         try:
@@ -124,6 +130,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Fetch a single item from a DynamoDB table.
     def get_item(self, table_name: str, key: Dict[str, Any]) -> Dict[str, Any]:
         """Get an item from a DynamoDB table."""
         try:
@@ -133,6 +140,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Update attributes for an item in a table.
     def update_item(
         self,
         table_name: str,
@@ -160,6 +168,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Delete a single item from a table.
     def delete_item(self, table_name: str, key: Dict[str, Any]) -> Dict[str, Any]:
         """Delete an item from a DynamoDB table."""
         try:
@@ -169,6 +178,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Query table items using key conditions.
     def query_items(
         self,
         table_name: str,
@@ -214,6 +224,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Scan table items optionally using filters.
     def scan_items(
         self,
         table_name: str,
@@ -245,6 +256,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Retrieve multiple items across tables in a batch.
     def batch_get_items(self, request_items: Dict[str, Any]) -> Dict[str, Any]:
         """Batch get multiple items from DynamoDB tables."""
         try:
@@ -256,6 +268,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Perform batch put and delete operations.
     def batch_write_items(self, request_items: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any]:
         """Batch write operations (put/delete) for DynamoDB items."""
         try:
@@ -267,6 +280,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Execute multiple PartiQL statements together.
     def batch_execute_statements(self, statements: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Execute multiple PartiQL statements in a batch."""
         try:
@@ -283,6 +297,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Describe current table TTL configuration.
     def describe_ttl(self, table_name: str) -> Dict[str, Any]:
         """Get the TTL settings for a table."""
         try:
@@ -297,6 +312,7 @@ class DynamoDBService:
         except ClientError as e:
             return {"success": False, "error": str(e)}
 
+    # Update table TTL status and tracked attribute.
     def update_ttl(self, table_name: str, enabled: bool, attribute_name: str) -> Dict[str, Any]:
         """Update the TTL settings for a table."""
         try:
