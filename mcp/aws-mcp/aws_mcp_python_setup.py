@@ -1,3 +1,5 @@
+"""Setup script defining packaging configuration for the AWS MCP server."""
+
 from setuptools import setup, find_packages
 
 setup(
