@@ -1,3 +1,5 @@
+# This file lists patterns that should be ignored by git for the AWS MCP Python project.
+# It helps keep build artifacts, environment files, and editor settings out of version control.
 # Python
 __pycache__/
 *.py[cod]
