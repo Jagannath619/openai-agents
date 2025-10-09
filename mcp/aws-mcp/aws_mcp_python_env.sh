@@ -1,0 +1,5 @@
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=your_access_key_id
+AWS_SECRET_ACCESS_KEY=your_secret_access_key
+# Optional: AWS_SESSION_TOKEN for temporary credentials
+# AWS_SESSION_TOKEN=your_session_token

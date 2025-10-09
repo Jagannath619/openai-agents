@@ -1,0 +1,51 @@
+# AWS MCP Server (Python) - Complete Repository
+
+## Project Structure
+
+```
+aws-mcp-server/
+├── pyproject.toml
+├── setup.py
+├── requirements.txt
+├── .gitignore
+├── .env.example
+├── README.md
+├── src/
+│   └── aws_mcp_server/
+│       ├── __init__.py
+│       ├── server.py
+│       ├── config.py
+│       ├── services/
+│       │   ├── __init__.py
+│       │   ├── s3_service.py
+│       │   └── dynamodb_service.py
+│       └── tools/
+│           ├── __init__.py
+│           ├── s3_tools.py
+│           └── dynamodb_tools.py
+```
+
+## Installation Instructions
+
+1. Clone the repository
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Configure AWS credentials:
+```bash
+cp .env.example .env
+# Edit .env with your AWS credentials
+```
+
+5. Run the server:
+```bash
+python -m aws_mcp_server.server
+```
